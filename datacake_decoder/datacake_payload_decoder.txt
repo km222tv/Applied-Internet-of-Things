@@ -1,0 +1,18 @@
+TO BE ADDED IN THE Payload Decoder SECTION OF THE DATACAKE DEVICE CONFIGURATION TAB:
+
+function Decoder(payload) {
+    return [
+        {
+            field: "HUMIDITY",
+            value: payload[0]
+        },
+        {
+            field: "TEMPERATURE",
+            value: (payload[1] << 24 >> 16 | payload[2]) / 100
+        },
+        {
+            field: "MOISTURE",
+            value: (payload[3] << 24 >> 16 | payload[4])
+        }
+    ];
+}
