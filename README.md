@@ -36,7 +36,7 @@ This is a short information about the code you can find in the GitHub repository
 * For the Datacake Payload decoder configuration ([Link](https://github.com/km222tv/Applied-Internet-of-Things/tree/main/datacake_decoder))
     * When having registered your device in Datacake, create the following three fields on the device configuration tab; Humidity, Temperature and Moisture, to be able to store the sensor data values.
     * The javascript code should be pasted into the Payload decoder section, on the same tab.
-    * Comment: The script is handling the raw payload coming from The Things Stack and devides it into the three values which are then stored in the three fields. 
+    * Comment: The script is handling the raw payload coming from The Things Stack (originally from the struct in [main.py, line 73](https://github.com/km222tv/Applied-Internet-of-Things/blob/main/lorawan/main.py)) and devides it into the three values which are then stored in the Datacake fields. 
 
 All code is also commented to describe what is done, where clarifications are needed.
 
