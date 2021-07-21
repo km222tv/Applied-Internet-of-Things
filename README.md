@@ -6,11 +6,11 @@ This is where you can find the code for the IoT device which sends multiple sens
 For information about the project, and a tutorial how to set things up, please go to https://hackmd.io/RYcG7EvNRWOfEwmZIQfCDw.
 
 ## The project
-In short, I have built a Pycom LoPy4 microcontroller with two sensors for measuring the temperature, humidity and moisture in my greenhouse.
+In short, I have built a device with the Pycom LoPy4 microcontroller and two sensors for measuring the temperature, humidity and moisture in my greenhouse.
 
-The next part was to connect the device via WiFi to Pycom Pybytes, then integrate to Datacake for displaying the data there and triggering alerts when values exceed predefined thresholds.
+The next part was to connect the device via WiFi to Pycom Pybytes, then integrate from there to Datacake to display the data and triggering alerts when values exceed predefined thresholds.
 
-Then I built my own Pycom Pygate LoRa gateway, to be able to connect the sensor device to The Things Stack (TTS), from which I set up a new integration to Datacake.
+Finally, I built my own Pycom Pygate LoRa gateway, to be able to connect the sensor device to The Things Stack (TTS), from which I set up a new integration to Datacake.
 
 ## The code
 This is a short information about the code you can find in the GitHub repository.
