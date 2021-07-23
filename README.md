@@ -1,19 +1,19 @@
 # Applied-Internet-of-Things
 As part of the summer course at Linnaeus University, 1DT305 - Applied Internet of Things. 
 
-This is where you can find the code for the IoT device which sends multiple sensor data streams to the Datacake cloud service via LoRaWAN and via Pybytes. 
+This is where you can find the code for the IoT device which sends multiple sensor data streams to the Datacake cloud service via LoRaWAN and via Pybytes (/lorawan and /pybytes), as well as the code for the Pygate LoRaWAN gateway (/pygate_gw).
 
 For information about the project, and a tutorial how to set things up, please go to https://hackmd.io/RYcG7EvNRWOfEwmZIQfCDw.
 
 ## The project
-In short, I have built a device with the Pycom LoPy4 microcontroller and two sensors for measuring the temperature, humidity and moisture in my greenhouse.
+In short, I have built a device with a Pycom LoPy4 microcontroller and two sensors for measuring the temperature, humidity and moisture in my greenhouse.
 
-The next part was to connect the device via WiFi to Pycom Pybytes, then integrate from there to Datacake to display the data in a dashboard and triggering alerts when values exceed predefined thresholds.
+The next part was to connect the device via WiFi to Pycom Pybytes, then integrate from there to Datacake for displaying the data in a dashboard and triggering alerts when values exceed predefined thresholds.
 
-Finally, I bought and set up a Pycom Pygate LoRa gateway, to be able to connect the sensor device to The Things Stack (TTS), from which I set up a new integration to Datacake.
+Finally, I bought and set up a Pycom Pygate LoRaWAN gateway, to be able to connect the sensor device to The Things Stack (TTS), from which I set up a new integration to Datacake. 
 
 ## The code
-This is a short information about the code you can find in the GitHub repository.
+This is a short description about the codes you can find in the GitHub repository, and how to implement them.
 
 **********
 * For the LoPy4 device using WiFi and Pybytes ([Link](https://github.com/km222tv/Applied-Internet-of-Things/tree/main/pybytes))
@@ -33,7 +33,7 @@ This is a short information about the code you can find in the GitHub repository
 
 A comment about the code which sends data to LoRaWAN in [main.py, line 73](https://github.com/km222tv/Applied-Internet-of-Things/blob/main/lorawan/main.py):
 
-When sending data in a struct package, the first argument is to define how the following arguments (the data) are stored in the struct. From the [Python documentation on struct](https://docs.python.org/3/library/struct.html), you can see that the first part of "package = struct.pack('>Bhh', int(humidity), int(temperature), int(moisture))" contains '>Bhh', which means that the data is coming like this:
+>When sending data in a struct package, the first argument is to define how the following arguments (the data) are stored in the struct. From the [Python documentation on struct](https://docs.python.org/3/library/struct.html), you can see that the first part of "package = struct.pack('>Bhh', int(humidity), int(temperature), int(moisture))" contains '>Bhh', which means that the data is coming like this:
    * Humidity: B = 1 Byte of Python type integer
    * Temperature: h = 2 Bytes of Python type integer (for values less that 0 and more than 255)
    * Moisture: h = same as above
@@ -43,7 +43,9 @@ When sending data in a struct package, the first argument is to define how the f
     * When having registered your device in Datacake, create the following three fields on the device configuration tab; Humidity, Temperature and Moisture, to be able to store the sensor data values.
     * The javascript code should be pasted into the Payload decoder section, on the same tab.
 
-Comment: The script is handling the raw payload coming from The Things Stack (originally from the struct in [main.py, line 73](https://github.com/km222tv/Applied-Internet-of-Things/blob/main/lorawan/main.py)) and devides it into the three values which are then stored in the Datacake fields. 
+Comment about the Datacake payload script:
+
+>The script is handling the raw payload coming from The Things Stack (originally from the struct in [main.py, line 73](https://github.com/km222tv/Applied-Internet-of-Things/blob/main/lorawan/main.py)) and devides it into the three values which are then stored in the Datacake fields. 
 
 **********
 * For your own Pycom Pygate LoRa gateway ([Link](https://github.com/km222tv/Applied-Internet-of-Things/tree/main/pygate_gw))
